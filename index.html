@@ -45,11 +45,41 @@
         </div>
     </div>
     <div id="toast" class="toast">계산이 완료되었습니다</div>
+    <img src="complete.png" alt="Result Image" class="result-image">
+    <audio id="complete-sound" src="complete.mp3"></audio>
     <script src="app.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.querySelector('.navbar-menu');
             menu.classList.toggle('active');
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function showImage() {
+            const image = document.querySelector('.result-image');
+            image.classList.add('show');
+            setTimeout(() => {
+                image.classList.remove('show');
+            }, 3000);
+        }
+
+        function playSound() {
+            const sound = document.getElementById('complete-sound');
+            sound.play();
+        }
+
+        function calculateResult() {
+            // 계산 로직 추가
+            showToast();
+            showImage();
+            playSound();
         }
     </script>
 </body>
