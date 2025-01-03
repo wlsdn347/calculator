@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>웹 계산기</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,7 +14,8 @@
 </head>
 <body>
     <nav class="navbar">
-        <ul>
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+        <ul class="navbar-menu">
             <li><a href="index.html">사칙연산 계산기</a></li>
             <li><a href="scientific.html">공학용 계산기</a></li>
             <li><a href="contact.html">연락처</a></li>
@@ -44,6 +45,12 @@
         </div>
     </div>
     <div id="toast" class="toast">계산이 완료되었습니다</div>
-    <script src="app.js"></script>
+    <script src="scripts/app.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
