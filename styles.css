@@ -120,10 +120,10 @@ body {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8); /* 투명도 80% 적용 */
     color: #fff;
     text-align: center;
-    border-radius: 2px;
+    border-radius: 12px;
     padding: 16px;
     position: fixed;
     z-index: 1;
