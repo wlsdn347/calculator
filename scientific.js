@@ -1,4 +1,4 @@
-const scientificCalculator = {
+const calculator = {
     display: null,
     currentInput: '',
     operator: null,
@@ -6,7 +6,7 @@ const scientificCalculator = {
     expression: '',
 
     init: function() {
-        this.display = document.getElementById('display-scientific');
+        this.display = document.getElementById('display');
         this.bindEvents();
     },
 
@@ -15,6 +15,9 @@ const scientificCalculator = {
         buttons.forEach(button => {
             button.addEventListener('click', this.handleButtonClick.bind(this));
         });
+
+        const functionMenu = document.getElementById('function-menu');
+        functionMenu.addEventListener('click', this.toggleMenu.bind(this));
     },
 
     handleButtonClick: function(event) {
@@ -34,7 +37,7 @@ const scientificCalculator = {
     },
 
     isOperator: function(value) {
-        return ['+', '-', '*', '/', 'sin(', 'cos(', 'tan(', 'log(', 'sqrt(', '^'].includes(value);
+        return ['+', '-', '*', '/'].includes(value);
     },
 
     appendToExpression: function(value) {
@@ -44,7 +47,7 @@ const scientificCalculator = {
 
     calculate: function() {
         try {
-            const result = eval(this.expression.replace('^', '**'));
+            const result = eval(this.expression);
             this.updateDisplay(result);
             this.expression = result.toString();
             showToast('계산이 완료되었습니다');
@@ -64,6 +67,23 @@ const scientificCalculator = {
 
     updateDisplay: function(value) {
         this.display.value = value;
+    },
+
+    toggleMenu: function() {
+        const menu = document.getElementById('menu');
+        menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+    },
+
+    showBasicCalculator: function() {
+        document.getElementById('basic-calculator').style.display = 'block';
+        document.getElementById('scientific-calculator').style.display = 'none';
+        this.toggleMenu();
+    },
+
+    showScientificCalculator: function() {
+        document.getElementById('basic-calculator').style.display = 'none';
+        document.getElementById('scientific-calculator').style.display = 'block';
+        this.toggleMenu();
     }
 };
 
@@ -76,4 +96,4 @@ function showToast(message) {
     }, 3000);
 }
 
-scientificCalculator.init();
+calculator.init();
